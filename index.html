@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+</head>
+
+<body>
+
+    <title>Earthquake Data</title>
+    <center>
+        <h1>Earthquake Data</h1>
+        <div>
+            <p>Underneath the Earth's crust exist techtonic plates which are slowly moving. These plates can be seen by the blue lines in the map below. As they rub against each other, the friction causes them to stick. However, when they overcome this friction, they slip. This slip causes a shockwave that travels through the earth's crust, eventually causes the ground to shake - what we know as an earthquake. Due to their cause, it would make sense that earthquakes tend to happen local to the meeting point of two or more techtonic plates. This is what can be seen in the map, where most events occur along the lines of adjoining techtonic plates. From the map, it could be argued that the more techtonic plates meet at a position, the more likely that position is to experience an earthquake at a given time, and the higher in magnitude those earthquakes tend to be.</p>
+        </div>
+        <div id="scatter_plot"></div>
+        <div>
+            <br/><br/><br/><br/><br/><br/><p>An earthquake's magnitude is measured using the "Richter Scale". This is a base-10 logarithmic scale, implying that an earthquake that has a magnitude 1 higher on the Richter scale actually had an intensity that was 10x as great. When trying to decide how badly a country has been affected by earthquakes, it is important to take into consideration both the volume of earthquakes experienced, but also the intensity of each of those earthquakes. Using the cumulative magnitude bar plot above is one way we can attempt to identify those countries which have been the most affected. From this method, it would appear that Chile (with a cumulative magnitude of 187.3) has been the most affected, within the timeline of this data. </p>
+        </div>
+    </center>
+    
+
+    
+
+    <script type="text/javascript">
+
+        var spec2 = "js/point_map_pie_chart.vg.json";
+        vegaEmbed('#scatter_plot', spec2, {renderer: "svg", actions: false}).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    </script>
+
+</body>
+
+</html>
