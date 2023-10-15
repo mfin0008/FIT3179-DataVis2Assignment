@@ -20,7 +20,7 @@
     ],
     "vconcat": [
         {
-            "width": 1000,
+            "width": 1400,
             "title": "Cumulative Magnitude of Earthquakes by Country",
             "data": {
                 "url": "https://raw.githubusercontent.com/mfin0008/FIT3179-DataVis2/main/data/modified_earthquake_data.csv"
