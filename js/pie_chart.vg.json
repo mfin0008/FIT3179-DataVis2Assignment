@@ -59,7 +59,7 @@
                 {
                     "mark": {
                         "type": "text",
-                        "radius": 120
+                        "radius": 200
                     },
                     "encoding": {
                         "text": {
