@@ -9,30 +9,150 @@
 
     <!-- CSS file -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 
 </head>
 
-<body>
+<body style="background-color:#E4F6F8; font-family: 'Open Sans';">
 
     <title>Earthquake Data</title>
     <center>
         <h1>Earthquake Data</h1>
-        <div>
-            <p>Underneath the Earth's crust exist techtonic plates which are slowly moving. These plates can be seen by the blue lines in the map below. As they rub against each other, the friction causes them to stick. However, when they overcome this friction, they slip. This slip causes a shockwave that travels through the earth's crust, eventually causes the ground to shake - what we know as an earthquake. Due to their cause, it would make sense that earthquakes tend to happen local to the meeting point of two or more techtonic plates. This is what can be seen in the map, where most events occur along the lines of adjoining techtonic plates. From the map, it could be argued that the more techtonic plates meet at a position, the more likely that position is to experience an earthquake at a given time, and the higher in magnitude those earthquakes tend to be.</p>
-        </div>
-        <div id="scatter_plot"></div>
-        <div>
-            <br/><br/><br/><br/><br/><br/><p>An earthquake's magnitude is measured using the "Richter Scale". This is a base-10 logarithmic scale, implying that an earthquake that has a magnitude 1 higher on the Richter scale actually had an intensity that was 10x as great. When trying to decide how badly a country has been affected by earthquakes, it is important to take into consideration both the volume of earthquakes experienced, but also the intensity of each of those earthquakes. Using the cumulative magnitude bar plot above is one way we can attempt to identify those countries which have been the most affected. From this method, it would appear that Chile (with a cumulative magnitude of 187.3) has been the most affected, within the timeline of this data. </p>
-        </div>
-    </center>
-    
+        <div id="container" style="display: flex;">
+            <div style="width:20vw; margin:5vh 2vw;">
+                <img style="width:20vw;"
+                    src="https://cdn.britannica.com/34/127134-050-49EC55CD/Building-foundation-earthquake-Japan-Kobe-January-1995.jpg">
+                <figcaption>"1995 earthquake in Kobe, Japan"</figcaption>
+            </div>
 
-    
+            <div>
+                <h2>How do Techtonic Plates Affect Earthquake Intensity?</h2>
+                <div style="width:50vw; margin:5vh 0vw;">
+                    <p align="justify">
+                        Underneath the Earth's crust exist techtonic plates which are moving very slowly.
+                        These plates can be seen by the blue lines in the map below.
+                        As they rub against each other, the friction causes them to stick.
+                        However, when they overcome this friction, they slip.
+                        This slip causes a shockwave that travels through the earth's crust,
+                        eventually causing the ground to shake - <i>what we know as an earthquake.</i>
+                        Due to their cause, it would make sense that earthquakes tend to happen local
+                        to the meeting point of two or more techtonic plates.
+                        This is what can be seen in the map, where most events occur along the lines of
+                        adjoining techtonic plates.
+                        From the map, it could be argued that <strong>the more techtonic plates meet at a
+                            position</strong>,
+                        the <strong>more likely that position is to experience an earthquake</strong> at a given time,
+                        and the <strong>higher in magnitude</strong> those earthquakes tend to be.
+                    </p>
+                </div>
+            </div>
+
+            <div style="width:20vw; margin:5vh 2vw;">
+                <img style="width:20vw;"
+                    src="https://img.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/VE2CZS46HYI3UWOMQEEHKJ46IM.jpeg&w=1800&high_res=true">
+                <figcaption>"Rescuers after the 2023 Morocco earthquake"</figcaption>
+            </div>
+
+        </div>
+
+        <div id="point_map"></div>
+
+        <hr style="border-top: 3px solid #000000; margin:5vh 5vw" />
+
+        <h2>The Richter Scale as a Measure of Magnitude</h2>
+        <div id="container" style="display: flex;">
+
+            <img style="height:auto; width:43vw; margin:5vh 6vw;"
+                src="https://t3.ftcdn.net/jpg/01/73/64/58/360_F_173645818_uDkjd2dipJlWuAjLeJqBZFggbovvSVAD.jpg">
+            <div style="width:35vw; margin:5vh 0vw;">
+                <p align="justify">An earthquake's magnitude is measured using the <strong>"Richter Scale"</strong>.
+                    This is a base-10 logarithmic scale,
+                    implying that an earthquake that has a magnitude 1 higher on the Richter scale actually had an
+                    intensity
+                    that was <i>10x as great</i>. When trying to decide how badly a country has been affected by
+                    earthquakes, it is
+                    important to take into consideration both the <i>volume</i> of earthquakes experienced, but also the
+                    <i>intensity</i>
+                    of each of those earthquakes. Using the cumulative magnitude bar plot above is one way we can
+                    attempt to
+                    identify those countries which have been the most affected. From this method, it would appear that
+                    <strong>Chile (with a cumulative magnitude of 187.3) has been the most affected</strong>, within the
+                    timeline of this data.
+                </p>
+            </div>
+        </div>
+
+        <div id="time_series-bar_chart"></div>
+
+        <hr style="border-top: 3px solid #000000; margin:5vh 5vw" />
+
+        <h2>The PAGER Alert Level System</h2>
+        <div id="container" style="display: flex; margin-bottom: 5vh;">
+            <div>
+                <div style="width:35vw; margin:0 15vw;">
+                    <p align="justify">
+                        While the Richter Scale is used to measure the <i>intensity</i> of earthquakes,
+                        the <strong>PAGER Alert Level System</strong> is designed to measure their <i>impact</i>.
+                        <br>For more information, <a href="https://earthquake.usgs.gov/data/pager/background.php">click
+                            here.</a>
+                    </p>
+                </div>
+                <table>
+                    <tr>
+                        <th>Alert Level</th>
+                        <th>Estimated Fatalities</th>
+                        <th>Estimated Losses</th>
+                        <th>Scale of Response</th>
+                    </tr>
+                    <tr>
+                        <td class="red">Red</td>
+                        <td class="red">1000+</td>
+                        <td class="red">$1 billion+</td>
+                        <td class="red">International Response</td>
+                    </tr>
+                    <tr>
+                        <td class="orange">Orange</td>
+                        <td class="orange">100-999</td>
+                        <td class="orange">$100 million-$1 billion</td>
+                        <td class="orange">International Response</td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">Yellow</td>
+                        <td class="yellow">1-99</td>
+                        <td class="yellow">$1 million-$100 million</td>
+                        <td class="yellow">International Response</td>
+                    </tr>
+                    <tr>
+                        <td class="green">Green</td>
+                        <td class="green">0</td>
+                        <td class="green">
+                            <$1 million</td>
+                        <td class="green">International Response</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="pie_chart"></div>
+        </div>
+
+
+
+
+    </center>
+
 
     <script type="text/javascript">
 
-        var spec2 = "js/point_map_pie_chart.vg.json";
-        vegaEmbed('#scatter_plot', spec2, {renderer: "svg", actions: false}).then(function (result) {
+        var pointmapPath = "js/point_map.vg.json";
+        vegaEmbed('#point_map', pointmapPath, { renderer: "svg", actions: false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+        var timeSeries_barChartPath = "js/time_series-bar_chart.vg.json";
+        vegaEmbed('#time_series-bar_chart', timeSeries_barChartPath, { renderer: "svg", actions: false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+        var pieChartPath = "js/pie_chart.vg.json";
+        vegaEmbed('#pie_chart', pieChartPath, { renderer: "svg", actions: false }).then(function (result) {
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
     </script>

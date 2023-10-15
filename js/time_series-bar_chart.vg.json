@@ -1,0 +1,143 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "params": [
+        {
+            "name": "selected_continent",
+            "value": "All Continents",
+            "bind": {
+                "input": "select",
+                "options": [
+                    "All Continents",
+                    "Asia",
+                    "South America",
+                    "North America",
+                    "Europe",
+                    "Oceania"
+                ],
+                "name": "Select a Continent: "
+            }
+        }
+    ],
+    "vconcat": [
+        {
+            "width": 1000,
+            "title": "Cumulative Magnitude of Earthquakes by Country",
+            "data": {
+                "url": "https://raw.githubusercontent.com/mfin0008/FIT3179-DataVis2/main/data/modified_earthquake_data.csv"
+            },
+            "transform": [
+                {
+                    "filter": "datum.magnitude != '' && datum.country != '' && datum.continent != ''"
+                },
+                {
+                    "filter": "selected_continent === 'All Continents' || datum.continent === selected_continent"
+                }
+            ],
+            "mark": {
+                "type": "bar",
+                "cornerRadiusEnd": 4
+            },
+            "encoding": {
+            "x": {
+                "field": "country",
+                "type": "nominal",
+                "title": "Country",
+                "sort": "-y"
+            },
+            "y": {
+                "field": "magnitude",
+                "type": "quantitative",
+                "aggregate": "sum",
+                "title": "Cumulative Magnitude [Richter Scale]"
+            },
+            "color": {
+                "field": "continent",
+                "type": "nominal"
+            },
+            "tooltip": [
+                {
+                    "field": "country",
+                    "type": "nominal",
+                    "title": "Country"
+                },
+                {
+                    "field": "magnitude",
+                    "type": "quantitative",
+                    "aggregate": "sum",
+                    "title": "Cumulative Magnitude [Richter Scale]"
+                }
+            ]
+        }
+    },
+    {
+        "width": 1000,
+        "title": "Magnitude of Earthquakes over Time",
+        "data": {
+            "url": "https://raw.githubusercontent.com/mfin0008/FIT3179-DataVis2/main/data/modified_earthquake_data.csv"
+        },
+        "transform": [
+            {
+                "filter": "datum.magnitude != ''"
+            },
+            {
+                "filter": "datum.date_time != ''"
+            },
+            {
+                "filter": "selected_continent === 'All Continents' || datum.continent === selected_continent && datum.continent != ''"
+            }
+        ],
+        "mark": {
+            "type": "line",
+            "point": {
+                "filled": true,
+                "fill": "black"
+            }
+        },
+        "encoding": {
+            "x": {
+                "timeUnit": "yearmonthdate",
+                "field": "date_time",
+                "title": "Date"
+            },
+            "y": {
+                "field": "magnitude",
+                "title": "Magnitude [Richter Scale]",
+                "type": "quantitative",
+                "scale": {
+                    "domain": [
+                        6,
+                        9.5
+                    ]
+                }
+            },
+            "tooltip": [
+                {
+                    "field": "title",
+                    "type": "nominal"
+                },
+                {
+                    "field": "magnitude",
+                    "type": "quantitative",
+                    "title": "Magnitude [Richter Scale]"
+                },
+                {
+                    "field": "latitude",
+                    "type": "quantitative",
+                    "title": "Latitude"
+                },
+                {
+                    "field": "longitude",
+                    "type": "quantitative",
+                    "title": "Longitude"
+                },
+                {
+                    "timeUnit": "yearmonthdate",
+                    "field": "date_time",
+                    "type": "nominal",
+                    "title": "Date"
+                }
+            ]
+        }
+    }
+]
+}

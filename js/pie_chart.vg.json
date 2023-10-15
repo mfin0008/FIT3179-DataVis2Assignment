@@ -1,0 +1,82 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 200,
+    "height": 200,
+    "title": "Proportion of alert levels",
+    "view": {
+        "stroke": "transparent"
+    },
+    "layer": [
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/mfin0008/FIT3179-DataVis2/main/data/modified_earthquake_data.csv"
+            },
+            "encoding": {
+                "theta": {
+                    "field": "alert",
+                    "type": "quantitative",
+                    "aggregate": "count",
+                    "stack": true,
+                    "sort": "size"
+                },
+                "color": {
+                    "field": "alert",
+                    "type": "nominal",
+                    "scale": {
+                        "range": [
+                            "#4CBB17",
+                            "#FF8A33",
+                            "#FF5733",
+                            "#FAD02C"
+                        ]
+                    },
+                    "title": "Alert Level"
+                },
+                "tooltip": [
+                    {
+                        "field": "alert",
+                        "title": "Alert Level"
+                    },
+                    {
+                        "field": "alert",
+                        "type": "quantitative",
+                        "aggregate": "count",
+                        "title": "Number of Occurrences"
+                    }
+                ]
+            },
+            "transform": [
+                {
+                    "filter": "datum.alert != ''"
+                }
+            ],
+            "layer": [
+                {
+                    "mark": {
+                        "type": "arc"
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "radius": 120
+                    },
+                    "encoding": {
+                        "text": {
+                            "field": "alert",
+                            "type": "nominal"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "align": "center",
+                        "baseline": "middle",
+                        "color": "black"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,135 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 1000,
+    "height": 600,
+    "title": "Earthquake Distribution Across Techtonic Plates (Magnitude > 6.5)",
+    "projection": {
+        "type": "equirectangular",
+        "center": [
+            0,
+            0
+        ]
+    },
+    "view": {
+        "stroke": "transparent"
+    },
+    "layer": [
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/mfin0008/FIT3179-DataVis2/main/data/.topojson%20files/countries.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "ne_110m_admin_0_countries"
+                }
+            },
+            "mark": {
+                "type": "geoshape",
+                "fill": "#77DD77",
+                "stroke": "lightgray"
+            }
+        },
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/mfin0008/FIT3179-DataVis2/main/data/.topojson%20files/graticules.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "ne_110m_graticules_30"
+                }
+            },
+            "mark": {
+                "type": "geoshape",
+                "fill": "",
+                "stroke": "darkgray"
+            }
+        },
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/mfin0008/FIT3179-DataVis2/main/data/.topojson%20files/techtonic%20plates.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "PB2002_boundaries1"
+                }
+            },
+            "mark": {
+                "type": "geoshape",
+                "fill": "",
+                "stroke": "darkblue"
+            }
+        },
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/mfin0008/FIT3179-DataVis2/main/data/modified_earthquake_data.csv"
+            },
+            "transform": [
+                {
+                    "filter": "datum.magnitude != ''"
+                }
+            ],
+            "mark": {
+                "type": "point",
+                "tooltip": {
+                    "content": "data"
+                }
+            },
+            "encoding": {
+                "longitude": {
+                    "field": "longitude",
+                    "type": "quantitative"
+                },
+                "latitude": {
+                    "field": "latitude",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "field": "magnitude",
+                    "type": "quantitative",
+                    "title": "Magnitude [Richter Scale]",
+                    "scale": {
+                        "type": "threshold",
+                        "domain": [
+                            7,
+                            8
+                        ],
+                        "range": [
+                            "#bedaf7",
+                            "#7ab3ef",
+                            "#1666ba"
+                        ]
+                    },
+                    "legend": {
+                        "format": ".2s"
+                    }
+                },
+                "opacity": {
+                    "value": 1
+                },
+                "tooltip": [
+                    {
+                        "field": "title",
+                        "type": "nominal"
+                    },
+                    {
+                        "field": "magnitude",
+                        "type": "quantitative",
+                        "title": "Magnitude [Richter Scale]"
+                    },
+                    {
+                        "field": "latitude",
+                        "type": "quantitative",
+                        "title": "Latitude"
+                    },
+                    {
+                        "field": "longitude",
+                        "type": "quantitative",
+                        "title": "Longitude"
+                    },
+                    {
+                        "field": "date_time",
+                        "type": "nominal",
+                        "title": "Date"
+                    }
+                ]
+            }
+        }
+    ]
+}
