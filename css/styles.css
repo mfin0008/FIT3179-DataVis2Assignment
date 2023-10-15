@@ -23,3 +23,7 @@ td.yellow {
 td.green {
     background-color: rgb(201, 252, 201);
 }
+
+.body-text {
+    font-size: x-large;
+}
